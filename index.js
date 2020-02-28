@@ -35,7 +35,7 @@ connection.connect(function(err) {
                           email varchar(50),
                           usergroup varchar(50),
                           lastvisit varchar(50),
-                          registered varchar(50)
+                          registered varchar(100)
                       )`;
  
   connection.query(createTodos, function(err, results, fields) {
