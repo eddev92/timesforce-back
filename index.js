@@ -40,6 +40,13 @@ connection.connect(function(err) {
     }
   });
 
+app.get('/users', function (req, res) {
+  connection.query('SELECT * FROM allNewsUsersTimesForce', function (error, results, fields) {
+      if (error) throw error;
+       return res.send({ error: false, data: results, message: 'Lista de total de usuarios' });
+     });
+})
+
 app.post('/user', (req, res) => {
   // let bodyRequest = req.body;
   let bodyRequest = {
