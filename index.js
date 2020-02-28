@@ -22,12 +22,12 @@ connection.connect(function(err) {
 });
 // `CREATE TABLE IF NOT EXISTS users(name VARCHAR2(50), lastname VARCHAR2(50), email VARCHAR2(50), usergroup VARCHAR2(50), lastvisit VARCHAR2(50), registered VARCHAR2(50))`
 
-  let createTodos = `create table if not exists allUsers(
+  let createTodos = `create table if not exists allNewsUsersTimesForce(
                           id int,
                           enabled int,
                           activated int,
                           name varchar(50),
-                          lastname varchar(50),
+                          username varchar(50),
                           email varchar(50),
                           usergroup varchar(50),
                           lastvisit varchar(50),
@@ -46,18 +46,18 @@ app.post('/user', (req, res) => {
     id: 1,
     enabled: 0,
     activated: 1,
-    name: "varchar(50)",
-    lastname: "varchar(50)",
-    email:" varchar(50)",
-    usergroup:" varchar(50)",
-    lastvisit:" varchar(50)",
-    registered:" varchar(50)"
+    name: "name(50)",
+    username: "username(50)",
+    email:" email(50)",
+    usergroup:" usergroup(50)",
+    lastvisit:" lastvisit(50)",
+    registered:" registered(50)"
   }
     if (!bodyRequest) {
       return res.status(400).send({ error:true, message: 'Please provide user' });
     }
-    connection.query("INSERT INTO allUsers SET ? ", { id: bodyRequest.id, enabled: bodyRequest.enabled, activated: bodyRequest.activated, name: bodyRequest.name, lastname: bodyRequest.lastname,
-    email:bodyRequest.email, usergroup: bodyRequest.usergroup, lastvisit: bodyRequest.lastvisit, registered:bodyRequest.registered }, function (error, results, fields) {
+    connection.query("INSERT INTO allNewsUsersTimesForce SET ? ", { id: bodyRequest.id, enabled: bodyRequest.enabled, activated: bodyRequest.activated, name: bodyRequest.name,
+    email:bodyRequest.email, username:bodyRequest.username, usergroup: bodyRequest.usergroup, lastvisit: bodyRequest.lastvisit, registered:bodyRequest.registered }, function (error, results, fields) {
     if (error) throw error;
       return res.send({ error: false, data: results, message: 'New user has been created successfully.' });
       });
